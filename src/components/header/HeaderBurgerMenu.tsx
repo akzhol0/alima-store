@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { contextData } from "../../context/logic";
 import en from "../../text/en/textEng";
 import ru from "../../text/ru/textRus";
 
 function HeaderBurgerMenu() {
-  const [headerBurgerTop, setHeaderBurgerTop] = useState<boolean>(false);
   const { setLangIsEng, langIsEng } = useContext(contextData);
   
   return (
     <div className="w-full flex justify-between py-4 border-b border-gray-200 px-5 md:px-0">
-      <div className={headerBurgerTop ? `w-[350px] h-full top-[57px] right-0 fixed flex flex-col items-center text-center md:hidden bg-[#131313] z-10 duration-[.3s]` : 'w-[350px] h-full top-[57px] right-[-400px] fixed flex flex-col items-center text-center md:hidden bg-[#131313] z-10 duration-[.3s]'}>
+      <div className='w-[350px] h-full top-[57px] right-0 fixed flex flex-col items-center text-center md:hidden bg-[#131313] z-10 duration-[.3s] w-[350px] h-full top-[57px] right-[-400px] fixed flex flex-col items-center text-center md:hidden bg-[#131313] z-10 duration-[.3s]'>
         <ul className="flex flex-col gap-5 text-white mt-4">
           <li className="cursor-pointer">{langIsEng ? en.header.helpers[0] : ru.header.helpers[0]}</li>
           <li className="cursor-pointer">{langIsEng ? en.header.helpers[1] : ru.header.helpers[1]}</li>

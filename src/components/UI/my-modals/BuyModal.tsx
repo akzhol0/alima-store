@@ -55,18 +55,16 @@ export default function BuyModal({isOpenPayment, setIsOpenPayment}: BuyModalProp
                 </div>
               </div>
 
-              {paymentMethod !== 'cash' && (
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">Данные карты</label>
-                  <div className="grid grid-cols-1 gap-2">
-                    <input type="text" placeholder="Номер карты" className="mt-1 w-full px-3 py-2 border rounded-lg"/>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input type="text" placeholder="Имя владельца" className="w-full px-3 py-2 border rounded-lg"/>
-                      <input type="text" placeholder="CVV" className="w-full px-3 py-2 border rounded-lg"/>
-                    </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Данные карты</label>
+                <div className="grid grid-cols-1 gap-2">
+                  <input type="text" placeholder="Номер карты" className="mt-1 w-full px-3 py-2 border rounded-lg"/>
+                  <div className="grid grid-cols-2 gap-2">
+                    <input type="text" placeholder="Имя владельца" className="w-full px-3 py-2 border rounded-lg"/>
+                    <input type="text" placeholder="CVV" className="w-full px-3 py-2 border rounded-lg"/>
                   </div>
                 </div>
-              )}
+              </div>
 
               <button className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg">Заказать</button>
             </div>

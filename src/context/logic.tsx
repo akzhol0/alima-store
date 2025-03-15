@@ -41,7 +41,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [cartProducts, setCartProducts] = useState<any>([]);
   const [modal, setModal] = useState<boolean>(false);
   const [searchBar, setSearchBar] = useState<string>('');
-  const [langIsEng, setLangIsEng] = useState<boolean>(true);
+  const [langIsEng, setLangIsEng] = useState<boolean>(false);
   const [token, setToken] = useState(cookies.get('auth-token'));
   const [savedProducts, setSavedProducts] = useState<any>([]);
   const [userInfo, setUserInfo] = useState<any>([]);
