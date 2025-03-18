@@ -59,7 +59,7 @@ My Boosty: iwavem
           img="/img/products/odezhda%20(2).png"
         />
       </div>
-      <div>
+      <div className='text-sm px-4'>
         Дипломная работа <br/>
         Тема: Заттарды сату бойынша электрондық коммерцияға арналған "AlimaStore" Web қосымшасының дизайны <br/>
         Сделала: Сайбекова Әлима Бекжанқызы
