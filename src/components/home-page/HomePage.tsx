@@ -1,15 +1,11 @@
-import {useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import '../../assets/styles/styles.scss'
-import {contextData} from '../../context/logic';
 import HomePageUnitPost from './HomePageUnitPost';
-import ru from '../../text/ru/textRus';
-import en from '../../text/en/textEng';
 import HomePageGallery from './HomePageGallery';
 import HomePageCollWrapper from './HomePageCollWrapper';
 import products from "../../database/products.ts";
 
 function HomePage() {
-  const {langIsEng} = useContext(contextData);
   const [productsUnderEight, setProductsUnderEight] = useState<any>([]);
 
   useEffect(() => {
@@ -34,10 +30,21 @@ function HomePage() {
       <HomePageCollWrapper loaded={true} products={productsUnderEight}/>
       <div className="w-[95%] xl:w-[70%]">
         <HomePageUnitPost
-          title={langIsEng ? en.homePage.titlefirst : ru.homePage.titlefirst}
-          small1={langIsEng ? en.homePage.smallfirst1 : ru.homePage.smallfirst1}
-          small2={langIsEng ? en.homePage.smallfirst2 : ru.homePage.smallfirst2}
-          img="/img/hp-pic-4.png"
+          title='Alima Online Store'
+          small1='Мой инстаграм: iwavem 🫶
+My Tiktok: ibelleem
+My Patreon: Alima598
+My Boosty: iwavem
+Мы предлагаем:
+Онлайн услуги,
+Вещи для фандомов,
+Костюмы для косплея,
+Одежды, Бижутерии,
+Обувь, Сумки, Аксессуары.
+Доставка по Астане от 500 тг.
+Доставка по Казахстану и СНГ.'
+          small2=''
+          img="/img/products/odezhda%20(4).png"
         />
       </div>
       <div className="hidden w-full md:flex flex-nowrap justify-center my-[50px]">
@@ -45,11 +52,17 @@ function HomePage() {
       </div>
       <div className="w-[95%] xl:w-[70%]">
         <HomePageUnitPost
-          title={langIsEng ? en.homePage.titlesecond : ru.homePage.titlesecond}
-          small1={langIsEng ? en.homePage.smallsecond1 : ru.homePage.smallsecond1}
-          small2={langIsEng ? en.homePage.smallsecond2 : ru.homePage.smallsecond2}
-          img="/img/hp-pic-5.png"
+          title='Куртка зимняя короткая оверсайз дутая двусторонняя'
+          small1='Идеальный выбор для холодного сезона. Объемная и теплая, она надежно защищает от ветра и мороза, обеспечивая комфорт даже в самые холодные дни. Благодаря двустороннему дизайну можно легко менять образ, сочетая куртку с разными стилями одежды.'
+          small2='Можно стирать в машине. 100% хлопок.
+'
+          img="/img/products/odezhda%20(2).png"
         />
+      </div>
+      <div>
+        Дипломная работа <br/>
+        Тема: Заттарды сату бойынша электрондық коммерцияға арналған "AlimaStore" Web қосымшасының дизайны <br/>
+        Сделала: Сайбекова Әлима Бекжанқызы
       </div>
     </div>
   )

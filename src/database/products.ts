@@ -102,19 +102,6 @@ const products = [{
     image: '/img/products/kruzhka%20(3).png',
   },
   {
-    id: 11,
-    title: 'Ветровка-курточка',
-    description: '✔️ Мембрана\n' +
-      '✔️ Защита от ветра\n' +
-      '✔️ Защита от влаги',
-    price: '15.000',
-    actualPrice: 15000,
-    category: 'Одежда',
-    rate: 4.8,
-    sizes: '110',
-    image: '/img/products/odezhda%20(1).png',
-  },
-  {
     id: 12,
     title: 'Куртка зимняя короткая оверсайз дутая двусторонняя',
     description: 'Куртка зимняя короткая оверсайз дутая двусторонняя',
