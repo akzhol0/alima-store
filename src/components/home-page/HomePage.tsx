@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import '../../assets/styles/styles.scss'
 import HomePageUnitPost from './HomePageUnitPost';
-import HomePageGallery from './HomePageGallery';
 import HomePageCollWrapper from './HomePageCollWrapper';
 import products from "../../database/products.ts";
 
@@ -37,9 +36,6 @@ function HomePage() {
           img="/img/products/odezhda%20(4).png"
         />
       </div>
-      <div className="hidden w-full md:flex flex-nowrap justify-center my-[50px]">
-        <HomePageGallery/>
-      </div>
       <div className="w-[95%] xl:w-[70%]">
         <HomePageUnitPost
           title='Куртка зимняя короткая оверсайз дутая двусторонняя'
@@ -49,7 +45,7 @@ function HomePage() {
           img="/img/products/odezhda%20(2).png"
         />
       </div>
-      <div className='text-sm px-4'>
+      <div className='text-md md:text-lg px-4'>
         Дипломная работа <br/>
         Тема: Заттарды сату бойынша электрондық коммерцияға арналған "AlimaStore" Web қосымшасының дизайны <br/>
         Сделала: Сайбекова Әлима Бекжанқызы
