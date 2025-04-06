@@ -48,7 +48,16 @@ function HomePage() {
       <div className='text-md md:text-lg px-4'>
         Дипломная работа <br/>
         Тема: Заттарды сату бойынша электрондық коммерцияға арналған "AlimaStore" Web қосымшасының дизайны <br/>
-        Сделала: Сайбекова Әлима Бекжанқызы
+        Сделала: Сайбекова Әлима Бекжанқызы <br/>
+        Номер телефона: +7-707-678-73-02 <br/>
+        <div className="flex items-center gap-2">
+          <div className='w-[50px] h-[50px]'>
+            <a href='https://www.instagram.com/alima_online_store?igsh=MWRmOWxmcmxtMHBnYQ%3D%3D' target='_blank'>
+              <img src="/img/logo.png" alt="logo"/>
+            </a>
+          </div>
+          Instagram: @alima_online_store
+        </div>
       </div>
     </div>
   )

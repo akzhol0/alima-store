@@ -68,8 +68,9 @@ function SinglePage() {
                 <p title={product.title} className="text-[30px] text-bold">
                   {product.title}
                 </p>
-                <p className="text-[20px] -mt-2">Category: {product.category}</p>
-                <p className="text-[20px] mt-4">Description: {product.description}</p>
+                <p className="text-[20px] -mt-2">Категория: {product.category}</p>
+                <p className="text-[20px] mt-4">Описание: {product.description}</p>
+                <p className="text-[20px] mt-4">Размеры {product?.sizes}</p>
                 <span className="w-auto flex justify-center items-center gap-1 py-2 text-white text-[20px] bg-red-500 rounded-md my-1">
                   <p>{product.price} тенге</p>
                   <sub className="line-through text-[#afafaf]">
