@@ -11,6 +11,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import UserProfile from "./components/user-profile/UserProfile";
 import SavedProducts from "./components/saved/SavedProducts";
+import Auth from "./Auth.tsx";
 
 function Router() {
   return (
@@ -26,6 +27,7 @@ function Router() {
           <Route path="/auth/login" element={<Login/>}></Route>
           <Route path="/auth/register" element={<Register />}></Route>
           <Route path="/user-profile" element={<UserProfile />}></Route>
+          <Route path='/auth' element={<Auth/>}></Route>
           <Route path="/saved" element={<SavedProducts/>}></Route>
         </Routes>
         <Footer />

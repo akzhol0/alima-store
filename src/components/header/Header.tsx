@@ -10,7 +10,7 @@ import ru from "../../text/ru/textRus";
 import categories from "../../database/categories.ts";
 
 function Header() {
-  const {modal, setSearchBar, langIsEng} = useContext(contextData);
+  const {modal, setSearchBar, langIsEng, auth} = useContext(contextData);
   const [categoriesState, setCategoriesState] = useState<string[]>([]);
   const [loadedCategories, setLoadedCategories] = useState<boolean>(false);
   const [tempSearchBar, setTempSearchBar] = useState<string>('');
@@ -61,10 +61,18 @@ function Header() {
               </Link>
             </button>
           </form>
-
-          <div className="flex ps-4 items-center text-[18px]">
-            <Link to='/cart'><span className="cursor-pointer flex items-center gap-2"> <span
-              className="w-[22px] h-[22px] mt-[-1px] whitespace-nowrap"><MyCartIcon/></span> {langIsEng ? en.header.userOptions[2] : ru.header.userOptions[2]}</span></Link>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+            <div className="flex ps-4 items-center text-[18px]">
+              <Link to='/cart'><span className="cursor-pointer flex items-center gap-2"> <span
+                className="w-[22px] h-[22px] mt-[-1px] whitespace-nowrap"><MyCartIcon/></span> {langIsEng ? en.header.userOptions[2] : ru.header.userOptions[2]}</span></Link>
+            </div>
+            <div className="flex items-center text-[18px]">
+              <Link to='/auth'>
+                  <div>
+                    Аккаунт
+                  </div>
+              </Link>
+            </div>
           </div>
 
         </div>

@@ -111,6 +111,7 @@ const products = [{
     rate: 4.7,
     sizes: 'M, L, 2XL',
     image: '/img/products/odezhda%20(2).png',
+    idDoc: 'VN2jX5aXMJHxTxv9brIM',
   },
   {
     id: 13,
@@ -122,6 +123,7 @@ const products = [{
     rate: 4.9,
     sizes: 'Размеры: S, M, L, XL',
     image: '/img/products/photo1.png',
+    idDoc: "Yv7sLBO8SflbKO1cm9cJ"
   },
   {
     id: 14,
@@ -133,6 +135,7 @@ const products = [{
     rate: 4.9,
     sizes: '42-48',
     image: '/img/products/odezhda%20(4).png',
+    idDoc: "dOcweuTyELBOcAaVNVDb"
   },
   {
     id: 15,
@@ -144,6 +147,7 @@ const products = [{
     rate: 4.9,
     sizes: '38, 40, 42, 44, 46',
     image: '/img/products/odezhda%20(5).png',
+    idDoc: "YueSZeLjvO5oCl36Hn7r"
   },
   {
     id: 16,
@@ -156,6 +160,7 @@ const products = [{
     rate: 4.9,
     sizes: '40, 42, 44, 46, 48, 50',
     image: '/img/products/odezhda%20(6).png',
+    idDoc: "e7w4epohkYukoMsUiNZI"
   },
   {
     id: 17,
@@ -168,6 +173,7 @@ const products = [{
     sizes: '34, 36, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68.\n' +
       'XS, M, L.',
     image: '/img/products/odezhda%20(7).png',
+    idDoc: "zkI3lHbPRpLEW1joMm4o"
   },
   {
     id: 18,
@@ -178,6 +184,7 @@ const products = [{
     category: 'Другие',
     rate: 4.7,
     image: '/img/products/other%20(1).png',
+    idDoc: '487DiFclLGJcd45LwpRP'
   },
   {
     id: 19,
@@ -188,6 +195,7 @@ const products = [{
     category: 'Другие',
     rate: 4.7,
     image: '/img/products/other%20(2).png',
+    idDoc: '3hMvBirJtrWpMQk05c6C',
   },
   {
     id: 20,

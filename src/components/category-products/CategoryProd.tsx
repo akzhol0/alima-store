@@ -5,6 +5,8 @@ import MyDefaultButton from "../UI/my-buttons/MyDefaultButton";
 import MyLoading from "../UI/myLoadingPerfs/MyLoading";
 import { contextData } from "../../context/logic";
 import products from "../../database/products.ts";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "../../firebase/config.ts";
 
 function CategoryProd() {
   const {langIsEng} = useContext(contextData)
@@ -12,6 +14,21 @@ function CategoryProd() {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [productsS, setProductsS] = useState<any>([]);
+
+  const getItems = async () => {
+    const snapshot = await getDocs(collection(db, "products"));
+    const items = snapshot.docs.map(doc => ({
+      idDoc: doc.id,
+      ...doc.data()
+    }));
+
+    items.map((item: any) => {
+      if (categoryTitle === item.category) {
+        setProductsS((prev: any) => [...prev, item]);
+        setLoaded(true);
+      }
+    })
+  }
 
   const getCategoryProducts = async () => {
     products.map((item: any) => {
@@ -39,8 +56,8 @@ function CategoryProd() {
 
   useEffect(() => {
     setProductsS([]);
-    setLoaded(false)
-    getCategoryProducts()
+    setLoaded(false);
+    getItems();
   }, [categoryTitle])
 
   return (

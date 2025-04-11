@@ -27,6 +27,8 @@ type ContextProps = {
   setSavedProducts: (arg0: any) => void;
   setUserInfo: (arg0: any) => void;
   getCartItemLS: () => void;
+  setAuth: (arg0: any) => void;
+  auth: boolean;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -47,6 +49,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [fetched, setFetched] = useState<boolean>(false);
   const navigate = useNavigate();
+  const [auth, setAuth] = useState(false);
 
   useEffect(() => {
     getUserInfo();
@@ -125,6 +128,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const addCartItem = (item: any) => {
     const res = localStorage.getItem(`cartItem${item.id}`)
     const cartParsedItem = res ? JSON.parse(res) : null;
+
     if (cartParsedItem === null) {
       localStorage.setItem(`cartItem${item.id}`, JSON.stringify({ ...item, quantity: 1 }))
     } else {
@@ -205,6 +209,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
       setSavedProducts,
       setUserInfo,
       getCartItemLS,
+      setAuth,
+      auth,
     }}>
       {children}
     </contextData.Provider>

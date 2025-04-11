@@ -16,10 +16,10 @@ function HomePageItem({ item }: HomePageItemProps) {
       </div>
       <div className="w-full flex flex-col items-center">
         <span className='flex items-center gap-1 py-1 px-3 text-white bg-red-500 rounded-md my-1'>
-          <p>{item.price} тенге</p>
+          <p>{item.actualPrice} тенге</p>
           <sub className='line-through text-[#afafaf]'>{Math.round((item.actualPrice / 5) + item.actualPrice)} тенге</sub>
         </span>
-        <Link to={`/single-product/${item.id}`}>
+        <Link to={`/single-product/${item.idDoc}`}>
           <p title={item.title} className='text-center h-[44px] overflow-y-hidden text-bold hover:underline'>{item.title}</p>
         </Link>
         <p>Category: {item.category}</p>

@@ -5,7 +5,9 @@ import { contextData } from '../../context/logic';
 import MyLoading from '../UI/myLoadingPerfs/MyLoading';
 import ru from '../../text/ru/textRus';
 import en from '../../text/en/textEng';
-import products from "../../database/products.ts";
+import {db} from "../../firebase/config.ts";
+import { doc, getDoc } from "firebase/firestore";
+
 
 function SinglePage() {
   const { addCartItem, langIsEng, savedProducts } =
@@ -15,7 +17,22 @@ function SinglePage() {
   const [product, setProduct] = useState<any>([]);
   let navigate = useNavigate();
 
+  const getProductById = async (id: string) => {
+    try {
+      const docRef = doc(db, "products", id);
+      const docSnap = await getDoc(docRef);
 
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setProduct(data);
+        setLoaded(true);
+      } else {
+        console.log("❌ No such document!");
+      }
+    } catch (error) {
+      console.error("❌ Error fetching document:", error);
+    }
+  };
 
   function foo() {
     const savedIds: number[] = [];
@@ -30,17 +47,17 @@ function SinglePage() {
     }
   });
 
-  const getSingleProd = async () => {
-    products.map((item: any) => {
-      if (Number(id) === item.id) {
-        setProduct(item);
-        setLoaded(true);
-      }
-    })
-  };
+  // const getSingleProd = async () => {
+  //   products.map((item: any) => {
+  //     if (Number(id) === item.id) {
+  //       setProduct(item);
+  //       setLoaded(true);
+  //     }
+  //   })
+  // };
 
   useEffect(() => {
-    !loaded && getSingleProd();
+    !loaded && getProductById(id);
   }, []);
 
   return (
@@ -72,7 +89,7 @@ function SinglePage() {
                 <p className="text-[20px] mt-4">Описание: {product.description}</p>
                 <p className="text-[20px] mt-4">Размеры {product?.sizes}</p>
                 <span className="w-auto flex justify-center items-center gap-1 py-2 text-white text-[20px] bg-red-500 rounded-md my-1">
-                  <p>{product.price} тенге</p>
+                  <p>{product.actualPrice} тенге</p>
                   <sub className="line-through text-[#afafaf]">
                     {Math.round(product.actualPrice / 5 + product.actualPrice)} тенге
                   </sub>
