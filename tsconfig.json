@@ -14,6 +14,9 @@
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "strictFunctionTypes": false
+    "strictFunctionTypes": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
