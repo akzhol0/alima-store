@@ -31,12 +31,14 @@ function CategoryProd() {
   }
 
   const getCategoryProducts = async () => {
-    products.map((item: any) => {
-      if (categoryTitle === item.category) {
-        setProductsS((prev: any) => [...prev, item]);
-        setLoaded(true);
-      }
-    })
+    if (true) {
+      products.map((item: any) => {
+        if (categoryTitle === item.category) {
+          setProductsS((prev: any) => [...prev, item]);
+          setLoaded(true);
+        }
+      })
+    }
 
   //   const url = `https://fakestoreapi.com/products/category/${categoryTitle}`;
   //   const options = {
@@ -58,6 +60,7 @@ function CategoryProd() {
     setProductsS([]);
     setLoaded(false);
     getItems();
+    getCategoryProducts();
   }, [categoryTitle])
 
   return (
