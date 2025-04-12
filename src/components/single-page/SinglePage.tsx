@@ -57,8 +57,11 @@ function SinglePage() {
   // };
 
   useEffect(() => {
-    !loaded && getProductById(id);
-  }, []);
+    if (!loaded && id) {
+      getProductById(id);
+    }
+  }, [id, loaded]);
+
 
   return (
     <div className="w-full flex justify-center">
