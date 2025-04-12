@@ -10,7 +10,7 @@ import ru from "../../text/ru/textRus";
 import categories from "../../database/categories.ts";
 
 function Header() {
-  const {modal, setSearchBar, langIsEng, auth} = useContext(contextData);
+  const {modal, setSearchBar, langIsEng} = useContext(contextData);
   const [categoriesState, setCategoriesState] = useState<string[]>([]);
   const [loadedCategories, setLoadedCategories] = useState<boolean>(false);
   const [tempSearchBar, setTempSearchBar] = useState<string>('');
