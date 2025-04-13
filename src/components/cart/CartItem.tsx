@@ -20,7 +20,7 @@ function CartItem({ item }: CartItemProps) {
         </span>
         <div className='my-4'>{check ? <p>{item.quantity}</p> : <p>{item.quantity}</p>}</div>
       </div>
-      <p className="text-[20px] me-2 md:me-4 whitespace-nowrap">{item.price} тг</p>
+      <p className="text-[20px] me-2 md:me-4 whitespace-nowrap">{item.actualPrice} тг</p>
       <span onClick={() => { deleteItemCart(item.id); setCheck(!check)}}>
         <MyDefaultButton>{langIsEng ? 'Өшіру' : 'Удалить'}</MyDefaultButton>
       </span>

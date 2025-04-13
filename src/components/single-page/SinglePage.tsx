@@ -61,8 +61,7 @@ function SinglePage() {
       getProductById(id);
     }
   }, [id, loaded]);
-
-
+  console.log(product)
   return (
     <div className="w-full flex justify-center">
       <div className="w-[95%] xl:w-[70%]">
@@ -86,11 +85,11 @@ function SinglePage() {
             <div className="w-full md:w-[50%] px-10">
               <div className="w-full flex flex-col item-center">
                 <p title={product.title} className="text-[30px] text-bold">
-                  {product.title}
+                  {langIsEng ? product.titleKaz : product.title}
                 </p>
-                <p className="text-[20px] -mt-2">Категория: {product.category}</p>
-                <p className="text-[20px] mt-4">Описание: {product.description}</p>
-                <p className="text-[20px] mt-4">Размеры {product?.sizes}</p>
+                <p className="text-[20px] -mt-2">Категория: {langIsEng ? product.categoryKaz : product.category}</p>
+                <p className="text-[20px] mt-4">{langIsEng ? product.descriptionKaz : product.description}</p>
+                <p className="text-[20px] mt-4">Размер {product?.sizes}</p>
                 <span className="w-auto flex justify-center items-center gap-1 py-2 text-white text-[20px] bg-red-500 rounded-md my-1">
                   <p>{product.actualPrice} тенге</p>
                   <sub className="line-through text-[#afafaf]">

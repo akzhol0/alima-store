@@ -7,7 +7,7 @@ type HomePageItemProps = {
 }
 
 function HomePageItem({ item }: HomePageItemProps) {
-  const { addCartItem } = useContext(contextData);
+  const { addCartItem, langIsEng } = useContext(contextData);
 
   return (
     <div className="w-full h-[600px] md:h-[500px] relative">
@@ -20,9 +20,11 @@ function HomePageItem({ item }: HomePageItemProps) {
           <sub className='line-through text-[#afafaf]'>{Math.round((item.actualPrice / 5) + item.actualPrice)} тенге</sub>
         </span>
         <Link to={`/single-product/${item.idDoc}`}>
-          <p title={item.title} className='text-center h-[44px] overflow-y-hidden text-bold hover:underline'>{item.title}</p>
+          <p title={item.titleKaz} className='text-center h-[44px] overflow-y-hidden text-bold hover:underline'>
+            {langIsEng ? item.titleKaz : item.title}
+          </p>
         </Link>
-        <p>Category: {item.category}</p>
+        <p>Category: {langIsEng ? item.categoryKaz : item.category}</p>
         <span className="absolute top-3 left-3 w-[30px] h-[30px] rounded flex justify-center items-center text-white bg-red-500">
           {item.rate}
         </span>

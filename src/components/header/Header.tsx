@@ -7,18 +7,30 @@ import MyModal from "../UI/my-modals/MyModal";
 import {contextData} from "../../context/logic";
 import en from "../../text/en/textEng";
 import ru from "../../text/ru/textRus";
-import categories from "../../database/categories.ts";
+import { getDoc, doc } from "firebase/firestore";
+import {db} from "../../firebase/config.ts";
+
 
 function Header() {
   const {modal, setSearchBar, langIsEng} = useContext(contextData);
-  const [categoriesState, setCategoriesState] = useState<string[]>([]);
+  const [categoriesState, setCategoriesState] = useState<any>([]);
   const [loadedCategories, setLoadedCategories] = useState<boolean>(false);
   const [tempSearchBar, setTempSearchBar] = useState<string>('');
   const navigate = useNavigate();
 
   const getAllCategories = async () => {
-    setCategoriesState(categories);
-    setLoadedCategories(true);
+    // setCategoriesState(categories);
+    // setLoadedCategories(true);
+
+    const docRef = doc(db, "categories", "vR45vccn6knDkujWRS28");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setCategoriesState(docSnap.data());
+      setLoadedCategories(true);
+    } else {
+      console.log("No such document!");
+    }
   }
 
   function navigateFunc(e: React.FormEvent<HTMLFormElement>) {
@@ -66,13 +78,13 @@ function Header() {
               <Link to='/cart'><span className="cursor-pointer flex items-center gap-2"> <span
                 className="w-[22px] h-[22px] mt-[-1px] whitespace-nowrap"><MyCartIcon/></span> {langIsEng ? en.header.userOptions[2] : ru.header.userOptions[2]}</span></Link>
             </div>
-            <div className="flex items-center text-[18px]">
-              <Link to='/auth'>
-                  <div>
-                    Аккаунт
-                  </div>
-              </Link>
-            </div>
+            {/*<div className="flex items-center text-[18px]">*/}
+            {/*    <Link to='/auth'>*/}
+            {/*      <div>*/}
+            {/*        Аккаунт*/}
+            {/*      </div>*/}
+            {/*    </Link>*/}
+            {/*</div>*/}
           </div>
 
         </div>

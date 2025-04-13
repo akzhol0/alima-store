@@ -27,8 +27,8 @@ type ContextProps = {
   setSavedProducts: (arg0: any) => void;
   setUserInfo: (arg0: any) => void;
   getCartItemLS: () => void;
-  setAuth: (arg0: any) => void;
-  auth: boolean;
+  setAuthR: (arg0: any) => void;
+  authR: boolean;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -49,7 +49,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [fetched, setFetched] = useState<boolean>(false);
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(false);
+  const [authR, setAuthR] = useState(false);
 
   useEffect(() => {
     getUserInfo();
@@ -80,14 +80,12 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   // get user info from ls
   const getUserInfo = () => {
-    if (token === undefined) {
-      navigate('/')
-      return;
-    }
-
-    const res = localStorage.getItem('user');
-    const user = res ? JSON.parse(res) : null;
-    setUserInfo(user)
+    // const res = localStorage.getItem('user');
+    // const user = res ? JSON.parse(res) : null;
+    //
+    // if (user === 'd') {
+    //   setUserInfo(user);
+    // }
   }
 
   // add to saved
@@ -209,8 +207,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
       setSavedProducts,
       setUserInfo,
       getCartItemLS,
-      setAuth,
-      auth,
+      setAuthR,
+      authR,
     }}>
       {children}
     </contextData.Provider>

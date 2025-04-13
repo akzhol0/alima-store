@@ -4,26 +4,28 @@ import {useContext, useEffect, useState} from "react";
 import en from "./text/en/textEng.ts";
 import ru from "./text/ru/textRus.ts";
 import MyDefaultButton from "./components/UI/my-buttons/MyDefaultButton.tsx";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {contextData} from "./context/logic.tsx";
 import { collection, addDoc } from "firebase/firestore";
 
 const Auth = () => {
-  const {langIsEng, setAuth} = useContext(contextData)
+  const {langIsEng, setAuthR} = useContext(contextData)
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [err, setErr] = useState<string>('');
   const [eye, setEye] = useState<boolean>(false);
-  const [loaded, setLoaded] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const [loaded, setLoaded] = useState<boolean>(true);
 
   const [form, setForm] = useState({
     title: "",
+    titleKaz: '',
     description: "",
+    descriptionKaz: '',
     actualPrice: 0,
-    img: "",
-    category: "Другие",
-    size: "",
+    image: "",
+    category: "",
+    categoryKaz: '',
+    sizes: "",
     rate: 4.2,
   });
 
@@ -43,13 +45,14 @@ const Auth = () => {
     }
 
     addItem(form);
+    setLoaded(true)
   };
 
   const addItem = async (data: any) => {
     try {
       const docRef = await addDoc(collection(db, "products"), data);
       console.log("Document written with ID: ", docRef.id);
-      navigate('/all-products');
+      // navigate('/all-products');
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -57,9 +60,10 @@ const Auth = () => {
 
   useEffect(() => {
     const res = localStorage.getItem("user");
+    const user = res ? JSON.parse(res) : null;
 
-    if (res === 'loggedin') {
-      setLoaded(true)
+    if (user) {
+      setAuthR(true)
     }
   }, [])
 
@@ -71,8 +75,6 @@ const Auth = () => {
         localStorage.setItem('user', JSON.stringify(userCredential.user));
         localStorage.setItem('user', 'loggedin')
         setErr(langIsEng ? 'Succesfully signed in' : 'Успешно вошли');
-        setLoaded(true);
-        setAuth(true);
       })
       .catch((err) => {
         if (err.code === "auth/invalid-email") {
@@ -100,10 +102,43 @@ const Auth = () => {
             onChange={handleChange}
             className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition"
           />
+          <input
+            type="text"
+            name="titleKaz"
+            placeholder="Название kaz"
+            value={form.titleKaz}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition"
+          />
+
+          <textarea
+            name="category"
+            placeholder="category"
+            value={form.category}
+            onChange={handleChange}
+            rows={3}
+            className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition resize-none"
+          />
+          <textarea
+            name="categoryKaz"
+            placeholder="categoryKaz"
+            value={form.categoryKaz}
+            onChange={handleChange}
+            rows={3}
+            className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition resize-none"
+          />
           <textarea
             name="description"
             placeholder="Описание"
             value={form.description}
+            onChange={handleChange}
+            rows={3}
+            className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition resize-none"
+          />
+          <textarea
+            name="descriptionKaz"
+            placeholder="Описание kaz"
+            value={form.descriptionKaz}
             onChange={handleChange}
             rows={3}
             className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition resize-none"
@@ -120,17 +155,17 @@ const Auth = () => {
           />
           <input
             type="text"
-            name="img"
+            name="image"
             placeholder="Ссылка на изображение"
-            value={form.img}
+            value={form.image}
             onChange={handleChange}
             className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition"
           />
           <input
             type="text"
-            name="size"
+            name="sizes"
             placeholder="Размеры (если есть)"
-            value={form.size}
+            value={form.sizes}
             onChange={handleChange}
             className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-800 transition"
           />

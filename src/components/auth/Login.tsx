@@ -10,7 +10,7 @@ import en from "../../text/en/textEng";
 
 function Login() {
   const navigate = useNavigate();
-  const { setToken, langIsEng, setUserInfo, getCartItemLS } = useContext(contextData)
+  const { setToken, langIsEng, setUserInfo, getCartItemLS, setAuthR } = useContext(contextData)
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [err, setErr] = useState<string>('');
@@ -22,12 +22,13 @@ function Login() {
 
     signInWithEmailAndPassword(auth, login, password)
       .then((userCredential) => {
-        localStorage.setItem('user', JSON.stringify(userCredential.user));
+        localStorage.setItem('user', JSON.stringify(login));
         cookies.set('auth-token', userCredential.user.uid);
         setToken(userCredential.user.uid);
         setErr(langIsEng ? 'Succesfully signed in' : 'Успешно вошли');
         setUserInfo(userCredential.user);
         getCartItemLS();
+        setAuthR(true);
 
         setTimeout(() => {
           navigate("/");

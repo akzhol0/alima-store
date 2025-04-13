@@ -14,10 +14,14 @@ function CategoryProd() {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [productsS, setProductsS] = useState<any>([]);
+  const res = false;
 
   const getItems = async () => {
+    setProductsS([]);
+    let items = []
+
     const snapshot = await getDocs(collection(db, "products"));
-    const items = snapshot.docs.map(doc => ({
+    items = snapshot.docs.map(doc => ({
       idDoc: doc.id,
       ...doc.data()
     }));
@@ -31,7 +35,7 @@ function CategoryProd() {
   }
 
   const getCategoryProducts = async () => {
-    if (true) {
+    if (res) {
       products.map((item: any) => {
         if (categoryTitle === item.category) {
           setProductsS((prev: any) => [...prev, item]);
@@ -57,7 +61,6 @@ function CategoryProd() {
    }
 
   useEffect(() => {
-    setProductsS([]);
     setLoaded(false);
     getItems();
     getCategoryProducts();
