@@ -82,13 +82,15 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   const getUserInfo = () => {
     const userToken = cookies.get('auth-token');
+
     if (userToken) {
       const getUserData = async () => {
         const docRef = doc(db, "users", userToken);
         const docSnap = await getDoc(docRef);
-
+        console.log(docSnap.exists())
         if (docSnap.exists()) {
           setUserInfo(docSnap.data());
+          console.log(docSnap.data());
           setAuthR(true)
         }
       };
