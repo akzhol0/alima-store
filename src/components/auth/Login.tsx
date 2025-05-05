@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Router, useNavigate } from "react-router-dom";
 import MyDefaultButton from "../UI/my-buttons/MyDefaultButton";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import Cookie from "universal-cookie";
@@ -10,12 +10,16 @@ import en from "../../text/en/textEng";
 
 function Login() {
   const navigate = useNavigate();
-  const { setToken, langIsEng, setUserInfo, getCartItemLS, setAuthR } = useContext(contextData)
+  const { setToken, langIsEng, setUserInfo, authR, setAuthR } = useContext(contextData)
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [err, setErr] = useState<string>('');
   const [eye, setEye] = useState<boolean>(false);
   const cookies = new Cookie();
+
+  useEffect(() => {
+    authR && ('/user-profile');
+  }, [authR, setAuthR])
 
   function SignIn(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,12 +31,16 @@ function Login() {
         setToken(userCredential.user.uid);
         setErr(langIsEng ? 'Succesfully signed in' : 'Успешно вошли');
         setUserInfo(userCredential.user);
-        getCartItemLS();
         setAuthR(true);
+        navigate('/user-profile');
 
         setTimeout(() => {
           navigate("/");
         }, 100)
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000)
       })
       .catch((err) => {
         if (err.code === "auth/invalid-email") {
@@ -56,7 +64,7 @@ function Login() {
             value={login}
             onChange={(e) => setLogin(e.target.value)}
             className="w-[320px] h-[45px] placeholder-black ps-4 bg-[#fff] border border-gray-400 rounded-lg"
-            placeholder={langIsEng ? en.signin.loginPlaceholder : ru.signin.loginPlaceholder}
+            placeholder='Почта'
             type="text" />
           <div className="relative">
             <input

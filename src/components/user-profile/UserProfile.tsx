@@ -13,10 +13,17 @@ function UserProfile() {
     <div className="w-full flex justify-center">
       <div className="w-[95%] md:w-[70%] h-[350px] flex flex-col justify-center">
         <span className="flex gap-2 text-[20px]">
-          <p>User email:</p>
+          <p>Имя:</p>
+          <p className="text-red-400 font-[600]">{userInfo?.name}</p>
+        </span>
+        <span className="flex gap-2 text-[20px]">
+          <p>Фамилия:</p>
+          <p className="text-red-400 font-[600]">{userInfo?.surname}</p>
+        </span>
+        <span className="flex gap-2 text-[20px]">
+          <p>Почта:</p>
           <p className="text-red-400 font-[600]">{userInfo?.email}</p>
         </span>
-        <p>Thats all i have...</p>
         <span onClick={() => {
           localStorage.removeItem('user');
           cookies.remove('auth-token');
@@ -24,7 +31,7 @@ function UserProfile() {
           setToken(undefined);
           setSavedProducts([])
         }}>
-          <MyDefaultButton className="w-[350px] mt-4">Exit</MyDefaultButton>
+          <MyDefaultButton className="w-[350px] mt-4">Выйти</MyDefaultButton>
         </span>
       </div>
     </div>

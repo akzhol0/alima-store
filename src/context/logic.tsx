@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Cookies from 'universal-cookie';
-import { collection, doc, getDocs, setDoc, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, deleteDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 type ContextProps = {
@@ -80,12 +80,19 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   // get user info from ls
   const getUserInfo = () => {
-    // const res = localStorage.getItem('user');
-    // const user = res ? JSON.parse(res) : null;
-    //
-    // if (user === 'd') {
-    //   setUserInfo(user);
-    // }
+    const userToken = cookies.get('auth-token');
+    if (userToken) {
+      const getUserData = async () => {
+        const docRef = doc(db, "users", userToken);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setUserInfo(docSnap.data());
+          setAuthR(true)
+        }
+      };
+      getUserData();
+    }
   }
 
   // add to saved
