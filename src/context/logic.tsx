@@ -79,6 +79,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   }
 
   // get user info from ls
+
   const getUserInfo = () => {
     const userToken = cookies.get('auth-token');
     if (userToken) {
