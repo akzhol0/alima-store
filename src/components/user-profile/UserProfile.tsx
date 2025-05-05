@@ -14,7 +14,7 @@ function UserProfile() {
       <div className="w-[95%] md:w-[70%] h-[350px] flex flex-col justify-center">
         <div className="">
           <div className="w-[100px] h-[100px] overflow-hidden">
-            <img src="/img/user-img.png" alt="user"/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKf7bdPa_aOiwGzeNO4YY4YwvAya-Hy8vOUtOFkfi1SD3HDDhjCz7Ux6OqLKNiD3SIxM&usqp=CAU" alt="user"/>
           </div>
           <span className="flex gap-2 text-[20px]">
           <p>Имя:</p>
